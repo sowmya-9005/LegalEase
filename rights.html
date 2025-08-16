@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase - Know Your Rights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    :root {
+        /* Category colors */
+        --education: #4285f4;
+        --aadhaar: #34a853;
+        --food: #fbbc05;
+        --health: #ea4335;
+        --work: #673ab7;
+        --legal: #9c27b0;
+        --police: #607d8b;
+        --women: #e91e63;
+        --vote: #3f51b5;
+        --land: #795548;
+        --rti: #009688;
+        --scst: #ff5722;
+        --consumer: #8bc34a;
+
+        /* Primary blue theme */
+        --primary: #2b6cb0;
+        --primary-dark: #1e4e8c;
+        --primary-light: #ebf4ff;
+
+        /* UI colors */
+        --secondary: #f7fafc;
+        --text: #1a202c;
+        --text-light: #4a5568;
+        --border: #cbd5e0;
+        --white: #ffffff;
+        --success: #38a169;
+        --error: #e53e3e;
+
+        /* Spacing & sizing */
+        --space-sm: 0.5rem;
+        --space-md: 1rem;
+        --space-lg: 1.5rem;
+        --space-xl: 2rem;
+
+        /* Effects */
+        --radius-sm: 4px;
+        --radius-md: 8px;
+        --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease-in-out;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        color: var(--text);
+        line-height: 1.6;
+        background-color: var(--white);
+    }
+
+    /* Container */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-md);
+    }
+
+    /* Header */
+    header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--space-md);
+    }
+
+    .logo h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--white);
+        text-align: left;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: var(--space-lg);
+    }
+
+    nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        transition: var(--transition);
+    }
+
+    nav a:hover {
+        opacity: 0.8;
+    }
+
+    /* Titles */
+    h1 {
+        color: var(--primary-dark);
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .subtitle {
+        text-align: center;
+        color: var(--text-light);
+        margin-bottom: 25px;
+    }
+
+    /* Filters */
+    .filters {
+        display: flex;
+        gap: 10px;
+        margin: 20px auto;
+        max-width: 1000px;
+        flex-wrap: wrap;
+    }
+
+    .search-container {
+        flex: 2;
+        min-width: 200px;
+    }
+
+    #searchInput {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: 16px;
+        transition: var(--transition);
+    }
+
+    #searchInput:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px var(--primary-light);
+        outline: none;
+    }
+
+    .category-filter,
+    .language-select {
+        flex: 1;
+        min-width: 150px;
+    }
+
+    select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        font-size: 16px;
+        background: white;
+        transition: var(--transition);
+    }
+
+    select:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px var(--primary-light);
+        outline: none;
+    }
+
+    /* Cards */
+    .rights-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+        margin: 30px auto;
+        max-width: 1000px;
+    }
+
+    .right-card {
+        background: white;
+        border-radius: var(--radius-md);
+        padding: 20px;
+        box-shadow: var(--shadow-sm);
+        border-left: 4px solid var(--primary);
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .right-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-md);
+    }
+
+    .right-icon {
+        font-size: 24px;
+        margin-bottom: 10px;
+        color: var(--primary);
+    }
+
+    .right-title {
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--primary-dark);
+    }
+
+    .right-description {
+        color: var(--text-light);
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+
+    .right-category {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        font-size: 12px;
+        background: var(--primary-light);
+        color: var(--primary-dark);
+        padding: 3px 8px;
+        border-radius: 10px;
+    }
+
+    /* Buttons */
+    .card-actions {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .action-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        font-size: 14px;
+        transition: var(--transition);
+    }
+
+    .action-btn:hover {
+        background: var(--primary-dark);
+    }
+
+    .tts-btn {
+        background: var(--success);
+        flex: 0 0 40px;
+    }
+
+    .emergency-btn {
+        background: var(--error);
+    }
+
+    /* No results */
+    .no-results {
+        text-align: center;
+        grid-column: 1 / -1;
+        color: var(--text-light);
+        padding: 40px;
+    }
+
+    /* Tag */
+    .sensitive-tag {
+        background: var(--error);
+        color: white;
+        padding: 2px 8px;
+        border-radius: var(--radius-sm);
+        font-size: 12px;
+        margin-left: 5px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+        .filters {
+            flex-direction: column;
+        }
+    }
+</style>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <i class="fas fa-balance-scale"></i>
+        <h1>LegalEase</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a id="navHome" href="index.html">Home</a></li>
+            <li><a id="navRights" href="rights.html">Know Your Rights</a></li>
+            <li><a id="navEmergency" href="emergency.html">Emergency Help</a></li>
+            <li><a id="navAbout" href="about.html">About</a></li>
+            <li><a id="navContact" href="contact.html">Contact</a></li>
+        </ul>
+        
+    </nav>
+    <div class="auth-buttons">
+        
+        <button class="login-btn" id="loginBtn">Login</button>
+        <button class="signup-btn" id="signupBtn">Sign Up</button>
+    </div>
+    
+</header>
+
+    <h1>LegalEase - Know Your Rights</h1>
+    <div class="subtitle">Simplified legal information for all citizens</div>
+    
+    <div class="filters">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search rights (e.g. 'voting', 'land dispute')">
+        </div>
+        <div class="category-filter">
+            <select id="categorySelect">
+                <option value="">All Categories</option>
+                <option value="education">Education</option>
+                <option value="aadhaar">Aadhaar</option>
+                <option value="food">Food</option>
+                <option value="health">Health</option>
+                <option value="work">Work</option>
+                <option value="legal">Legal</option>
+                <option value="police">Police</option>
+                <option value="women">Women's Rights</option>
+                <option value="vote">Voting Rights</option>
+                <option value="land">Land Disputes</option>
+                <option value="rti">RTI</option>
+                <option value="scst">SC/ST Rights</option>
+                <option value="consumer">Consumer Rights</option>
+            </select>
+        </div>
+        <div class="language-select">
+            <select id="languageSelect">
+                <option value="en">English</option>
+                <option value="hi">Hindi</option>
+                <option value="te">Telugu</option>
+            </select>
+        </div>
+    </div>
+    
+    <div class="rights-container" id="rightsList">
+        <!-- Rights will be inserted here by JavaScript -->
+    </div>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 id="footerAboutTitle">LegalEase</h3>
+                <p id="footerAboutDesc">Empowering citizens with knowledge of their legal rights through simple, accessible information.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 id="footerLinksTitle">Quick Links</h3>
+                <ul>
+                    <li><a href="home.html" id="footerLink1">Home</a></li>
+                    <li><a href="rights.html" id="footerLink2">Know Your Rights</a></li>
+                    <li><a href="emergency.html" id="footerLink3">Emergency Help</a></li>
+                    <li><a href="about.html" id="footerLink4">About Us</a></li>
+                    <li><a href="contact.html" id="footerLink5">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 id="footerResourcesTitle">Legal Resources</h3>
+                <ul>
+                    <li><a href="#" id="footerResource1">Indian Constitution</a></li>
+                    <li><a href="#" id="footerResource2">Supreme Court Judgments</a></li>
+                    <li><a href="#" id="footerResource3">Legal Aid Clinics</a></li>
+                    <li><a href="#" id="footerResource4">NGO Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 id="footerContactTitle">Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contact@legalease.org</li>
+                    <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                    <li><i class="fas fa-map-marker-alt"></i> New Delhi, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p id="copyrightText">&copy; 2025 LegalEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-button" id="chatbotButton">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3 id="chatbotHeader">LegalEase Assistant</h3>
+                <button class="chatbot-close" id="chatbotClose">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message" id="chatbotWelcomeMessage">
+                    Hello! I'm your legal assistant. How can I help you today? You can ask me about your rights, legal procedures, or find relevant contacts.
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your legal question...">
+                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="loginModalTitle">Login</h2>
+                <button class="modal-close" id="loginModalClose">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail" id="loginEmailLabel">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" id="loginPasswordLabel">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="loginCancel"><span id="loginCancelText">Cancel</span></button>
+                    <button type="submit" class="btn btn-primary"><span id="loginSubmitText">Login</span></button>
+                </div>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;"><span id="noAccountText">Don't have an account?</span> <a href="#" id="showSignup"><span id="signupLinkText">Sign up</span></a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="signupModalTitle">Sign Up</h2>
+                <button class="modal-close" id="signupModalClose">&times;</button>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName" id="signupNameLabel">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail" id="signupEmailLabel">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword" id="signupPasswordLabel">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone" id="signupPhoneLabel">Phone Number</label>
+                    <input type="tel" id="signupPhone">
+                </div>
+                <div class="form-group">
+                    <label for="signupQualifications" id="signupQualificationsLabel">Qualifications</label>
+                    <textarea id="signupQualifications" required placeholder="Please describe your legal qualifications or experience"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="signupSpecialization" id="signupSpecializationLabel">Area of Specialization (if any)</label>
+                    <input type="text" id="signupSpecialization" placeholder="e.g. Family Law, Labor Law">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="signupCancel"><span id="signupCancelText">Cancel</span></button>
+                    <button type="submit" class="btn btn-primary"><span id="signupSubmitText">Submit Application</span></button>
+                </div>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;"><span id="haveAccountText">Already have an account?</span> <a href="#" id="showLogin"><span id="loginLinkText">Login</span></a></p>
+        </div>
+    </div>
+
+    <script>
+        // Expanded rights database with Hindi, English, Telugu translations
+        const rights = [
+            // Education Rights
+           { 
+    icon: 'school', 
+    title: 'Free education for children 6-14 years', 
+    description: 'Under the RTE Act, every child aged 6-14 has the right to free and compulsory education, including textbooks, uniforms, meals, and a safe learning environment.', 
+    category: 'education',
+    action: { text: 'RTE Helpline', phone: '18001026200' },
+    translations: {
+        hi: {
+            title: '6-14 साल के बच्चों के लिए मुफ्त शिक्षा',
+            description: 'आरटीई अधिनियम के तहत, 6-14 साल के हर बच्चे को मुफ्त और अनिवार्य शिक्षा का अधिकार है, जिसमें किताबें, यूनिफॉर्म, भोजन और सुरक्षित शिक्षा शामिल हैं।'
+        },
+        te: {
+            title: '6-14 సంవత్సరాల వయస్సు పిల్లలకు ఉచిత విద్య',
+            description: 'RTE చట్టం ప్రకారం, 6-14 సంవత్సరాల పిల్లలకు ఉచిత మరియు బాధ్యతాయుత విద్య హక్కు ఉంది, అందులో పాఠ్యపుస్తకాలు, యూనిఫామ్‌లు, భోజనం మరియు సురక్షిత విద్యావాతావరణం ఉన్నాయి.'
+        }
+    }
+},
+
+
+ // Midday Meal Scheme
+{ 
+    icon: 'restaurant', 
+    title: 'Midday Meal for School Children', 
+    description: 'Provides free meals to children in government and aided schools to improve nutrition, encourage attendance, and support overall health.', 
+    category: 'education',
+    action: { text: 'Scheme Details', link: 'https://mdm.nic.in' },
+    translations: {
+        hi: {
+            title: 'विद्यालयीन बच्चों के लिए मध्याह्न भोजन',
+            description: 'सरकारी और सहायता प्राप्त स्कूलों में बच्चों को मुफ्त भोजन प्रदान करता है, पोषण और स्वास्थ्य में सुधार के लिए।'
+        },
+        te: {
+            title: 'పాఠశాల పిల్లలకు మిడ్డే మీట్',
+            description: 'ప్రభుత్వ మరియు సహాయ పాఠశాలల్లో పిల్లలకు ఉచిత భోజనం అందిస్తుంది, పోషణ మరియు ఆరోగ్యం మెరుగుపరచడానికి.'
+        }
+    }
+},
+
+
+// Scholarships for Students
+{ 
+    icon: 'school', 
+    title: 'Student Scholarships', 
+    description: 'Various central and state government scholarship schemes provide financial support to students from economically weaker sections, minorities, and differently-abled students to continue their education and pursue higher studies.', 
+    category: 'education',
+    action: { text: 'Scholarship Portal', link: 'https://scholarships.gov.in' },
+    translations: {
+        hi: {
+            title: 'छात्रवृत्ति योजनाएँ',
+            description: 'केंद्र और राज्य सरकार की विभिन्न छात्रवृत्ति योजनाएँ आर्थिक रूप से कमजोर वर्ग, अल्पसंख्यक और विशेष रूप से सक्षम छात्रों को वित्तीय सहायता प्रदान करती हैं ताकि वे अपनी शिक्षा जारी रख सकें और उच्च शिक्षा प्राप्त कर सकें।'
+        },
+        te: {
+            title: 'విద్యార్థి స్కాలర్‌షిప్స్',
+            description: 'వివిధ కేంద్ర మరియు రాష్ట్ర ప్రభుత్వ స్కాలర్‌షిప్ పథకాలు ఆర్థికంగా బలహీన వర్గాల, మైనారిటీల మరియు భిన్న సామర్థ్యం ఉన్న విద్యార్థులకు వారి విద్య కొనసాగించడానికి మరియు ఉన్నత విద్యను పొందడానికి ఆర్థిక మద్దతును అందిస్తాయి.'
+        }
+    }
+},
+
+// Adult Literacy Programs
+{ 
+    icon: 'menu_book', 
+    title: 'Adult Literacy Programs', 
+    description: 'Adult literacy initiatives aim to reduce illiteracy among adults by providing basic reading, writing, and numeracy skills. These programs improve employment opportunities, empower communities, and promote lifelong learning.', 
+    category: 'education',
+    action: { text: 'Program Details', link: 'https://nlm.nic.in' },
+    translations: {
+        hi: {
+            title: 'वयस्क साक्षरता कार्यक्रम',
+            description: 'वयस्क साक्षरता पहल वयस्कों में निरक्षरता को कम करने के लिए बुनियादी पढ़ाई, लिखाई और गणना कौशल प्रदान करती हैं। ये कार्यक्रम रोजगार के अवसर बढ़ाते हैं, समुदायों को सशक्त बनाते हैं और आजीवन शिक्षा को प्रोत्साहित करते हैं।'
+        },
+        te: {
+            title: 'వయసు పెద్దవారి సాక్షరతా కార్యక్రమాలు',
+            description: 'వయసు పెద్దవారి సాక్షరతా కార్యక్రమాలు ప్రాథమిక చదువు, వ్రాత మరియు సంఖ్యా నైపుణ్యాలను అందించడం ద్వారా పెద్దవారి నిరక్షరతను తగ్గించడానికి ప్రయత్నిస్తాయి. ఈ కార్యక్రమాలు ఉద్యోగావకాశాలను మెరుగుపరుస్తాయి, సముదాయాలను సశక్త పరుస్తాయి మరియు జీవితాంతం నేర్చుకునే అవకాశాలను ప్రోత్సహిస్తాయి.'
+        }
+    }
+},
+
+
+   
+            
+            // Women's Rights
+           { 
+    icon: 'woman', 
+    title: 'Protection from domestic violence', 
+    description: 'The Protection of Women from Domestic Violence Act (2005) provides legal safeguards against physical, emotional, sexual, or economic abuse by a partner or family member. It ensures access to protection orders, emergency shelter, counseling, and financial support. Women can report abuse safely, seek justice, and live with dignity in a secure environment. The law promotes awareness and empowers women to claim their rights without fear.', 
+    category: 'women',
+    isSensitive: true,
+    action: { text: 'Women Helpline', phone: '181' },
+    translations: {
+        hi: {
+            title: 'घरेलू हिंसा से सुरक्षा',
+            description: 'महिलाओं को घरेलू हिंसा से बचाने वाला अधिनियम (2005) शारीरिक, भावनात्मक, यौन या आर्थिक शोषण के खिलाफ कानूनी सुरक्षा प्रदान करता है। इसमें सुरक्षा आदेश, आपातकालीन आश्रय, परामर्श और वित्तीय सहायता शामिल है। महिलाएं सुरक्षित रूप से शोषण की रिपोर्ट कर सकती हैं, न्याय पा सकती हैं और सम्मान के साथ सुरक्षित वातावरण में जीवन यापन कर सकती हैं। यह कानून जागरूकता बढ़ाता है और महिलाओं को उनके अधिकारों का भयमुक्त दावा करने के लिए सशक्त बनाता है।'
+        },
+        te: {
+            title: 'ఇంటి హింస నుండి రక్షణ',
+            description: 'గృహహింస నుండి మహిళల రక్షణ చట్టం (2005) భాగస్వామి లేదా కుటుంబ సభ్యుడు కలిగించిన శారీరక, భావోద్వేగ, లైంగిక లేదా ఆర్థిక దుర్వినియోగం నుండి చట్టపరమైన రక్షణను అందిస్తుంది. ఇందులో రక్షణ ఆర్డర్లు, అత్యవసర ఆశ్రయం, కౌన్సిలింగ్ మరియు ఆర్థిక సహాయం కల్పించబడుతుంది. మహిళలు భద్రతగా దుర్వినియోగాన్ని నివేదించగలవు, న్యాయం పొందగలవు మరియు సురక్షితమైన వాతావరణంలో గౌరవంగా జీవించగలవు. చట్టం అవగాహనను పెంచుతుంది మరియు మహిళలను వారి హక్కులను భయంలేని రీతిలో సాధించడానికి సాధికారంగా చేస్తుంది.'
+        }
+    }
+},
+
+   
+            
+            // Voting Rights
+            { 
+    icon: 'how_to_vote', 
+    title: 'Right to vote (18+ years)', 
+    description: 'Every Indian citizen aged 18 or above has the fundamental right to vote in elections. A valid Voter ID is mandatory for exercising this right. Voting is a civic duty that ensures representation in local, state, and national governments. Citizens are encouraged to stay informed about candidates and issues, participate actively, and help strengthen democracy by casting their vote responsibly.', 
+    category: 'vote',
+    action: { text: 'Election Commission', link: 'https://eci.gov.in' },
+    translations: {
+        hi: {
+            title: 'मतदान का अधिकार (18+ वर्ष)',
+            description: '18 वर्ष या उससे अधिक आयु का प्रत्येक भारतीय नागरिक चुनावों में मतदान का मौलिक अधिकार रखता है। इस अधिकार का प्रयोग करने के लिए वैध मतदाता पहचान पत्र अनिवार्य है। मतदान एक नागरिक कर्तव्य है जो स्थानीय, राज्य और राष्ट्रीय सरकारों में प्रतिनिधित्व सुनिश्चित करता है। नागरिकों को उम्मीदवारों और मुद्दों के बारे में जागरूक रहना चाहिए, सक्रिय रूप से भाग लेना चाहिए और जिम्मेदारीपूर्वक मतदान करके लोकतंत्र को मजबूत करना चाहिए।'
+        },
+        te: {
+            title: 'వోటు హక్కు (18+ సంవత్సరాలు)',
+            description: '18 సంవత్సరాలు లేదా అంతకుమీద వయస్సు గల ప్రతి భారతీయ పౌరుడికి ఎన్నికల్లో ఓటు హక్కు ఉంది. ఈ హక్కును వినియోగించడానికి సరైన ఓటరు ఐడి తప్పనిసరి. ఓటు హక్కు స్థానిక, రాష్ట్ర మరియు జాతీయ ప్రభుత్వాలలో ప్రతినిధిత్వాన్ని నిర్ధారిస్తుంది. పౌరులు అభ్యర్థులు మరియు సమస్యల గురించి తెలుసుకోవాలి, సక్రియంగా పాల్గొనాలి మరియు జవాబుదారీగా ఓటు వేసి ప్రజాస్వామ్యాన్ని బలోపేతం చేయాలి.'
+        }
+    }
+},
+
+            // RTI Rights
+{ 
+    icon: 'description', 
+    title: 'Access government information (RTI)', 
+    description: 'The Right to Information Act (2005) empowers citizens to request information from any public authority. It promotes transparency, accountability, and good governance. Citizens can seek details about government decisions, schemes, and expenditures. Filing an RTI helps uncover corruption, ensures citizens are informed, and strengthens democracy by allowing people to participate actively in government oversight.', 
+    category: 'rti',
+    action: { text: 'File RTI', link: 'https://rtionline.gov.in' },
+    translations: {
+        hi: {
+            title: 'सरकारी जानकारी तक पहुंच (आरटीआई)',
+            description: 'सूचना का अधिकार अधिनियम (2005) नागरिकों को किसी भी सार्वजनिक प्राधिकरण से जानकारी मांगने का अधिकार देता है। यह पारदर्शिता, जवाबदेही और अच्छे प्रशासन को बढ़ावा देता है। नागरिक सरकारी निर्णयों, योजनाओं और खर्चों के विवरण मांग सकते हैं। आरटीआई दायर करने से भ्रष्टाचार उजागर होता है, नागरिक सूचित रहते हैं और लोकतंत्र मजबूत होता है।'
+        },
+        te: {
+            title: 'ప్రభుత్వ సమాచారాన్ని యాక్సెస్ చేయండి (ఆర్టిఐ)',
+            description: 'సమాచార హక్కు చట్టం (2005) పౌరులకు ఏదైనా ప్రభుత్వ అధికార సంస్థ నుండి సమాచారాన్ని అభ్యర్థించడానికి హక్కు కల్పిస్తుంది. ఇది పారదర్శకత, జవాబుదారీదనం మరియు మంచి పరిపాలనను ప్రోత్సహిస్తుంది. పౌరులు ప్రభుత్వ నిర్ణయాలు, పథకాలు మరియు ఖర్చుల వివరాలను అడగవచ్చు. RTI దాఖలు చేయడం అవినీతిని బయటపెడుతుంది, పౌరులు అవగాహనలో ఉంటారు మరియు ప్రజాస్వామ్యాన్ని బలోపేతం చేస్తుంది.'
+        }
+    }
+},
+
+            
+          // Land Disputes
+{ 
+    icon: 'map', 
+    title: 'Resolve land disputes', 
+    description: 'Landowners and tenants can approach revenue courts or use online land records to resolve disputes. Legal guidance, mediation, and government schemes help settle ownership, boundary, and tenancy issues efficiently. Accessing digital records reduces delays and promotes transparency. Timely resolution prevents conflicts, ensures property rights, and supports fair land management.', 
+    category: 'land',
+    action: { text: 'Land Records', link: 'https://landrecords.gov.in' },
+    translations: {
+        hi: {
+            title: 'जमीन विवादों का समाधान',
+            description: 'जमीन मालिक और किरायेदार राजस्व अदालतों से संपर्क कर सकते हैं या विवादों को हल करने के लिए ऑनलाइन भूमि रिकॉर्ड का उपयोग कर सकते हैं। कानूनी मार्गदर्शन, मध्यस्थता और सरकारी योजनाएँ मालिकाना हक, सीमाएँ और किरायेदारी मुद्दों को प्रभावी ढंग से सुलझाने में मदद करती हैं। डिजिटल रिकॉर्ड तक पहुंचने से देरी कम होती है और पारदर्शिता बढ़ती है। समय पर समाधान संघर्षों को रोकता है, संपत्ति के अधिकार सुनिश्चित करता है और उचित भूमि प्रबंधन को बढ़ावा देता है।'
+        },
+        te: {
+            title: 'భూమి వివాదాలను పరిష్కరించండి',
+            description: 'భూమి యజమానులు మరియు అద్దెదారులు వివాదాలను పరిష్కరించడానికి రెవెన్యూ కోర్టులను సంప్రదించవచ్చు లేదా ఆన్‌లైన్ భూమి రికార్డులను ఉపయోగించవచ్చు. చట్టపరమైన మార్గదర్శకత్వం, మద్యస్థత మరియు ప్రభుత్వ పథకాలు సొంత హక్కులు, సరిహద్దులు మరియు అద్దె సమస్యలను సమర్థవంతంగా పరిష్కరించడంలో సహాయపడతాయి. డిజిటల్ రికార్డుల వినియోగం ఆలస్యం తగ్గిస్తుంది మరియు పారదర్శకతను ప్రోత్సహిస్తుంది. సమయానికి పరిష్కారం సంక్షోభాలను నివారిస్తుంది, ఆస్తి హక్కులను నిర్ధారిస్తుంది మరియు సమర్ధ భూవ్యవస్థాపనను ప్రోత్సహిస్తుంది.'
+        }
+    }
+},
+
+            // SC/ST Rights
+{ 
+    icon: 'gavel', 
+    title: 'Protection against caste discrimination', 
+    description: 'The SC/ST (Prevention of Atrocities) Act provides strict punishments for caste-based discrimination, harassment, and violence. It empowers victims to approach authorities, seek justice, and ensures government monitoring of cases. Awareness campaigns, legal aid, and support services help prevent atrocities, promote equality, and protect the rights of Scheduled Castes and Scheduled Tribes.', 
+    category: 'scst',
+    action: { text: 'National SC/ST Helpline', phone: '18004256666' },
+    translations: {
+        hi: {
+            title: 'जातिगत भेदभाव के खिलाफ सुरक्षा',
+            description: 'एससी/एसटी (अत्याचार निवारण) अधिनियम जाति आधारित भेदभाव, उत्पीड़न और हिंसा के लिए सख्त सजा प्रदान करता है। यह पीड़ितों को अधिकारियों से संपर्क करने, न्याय प्राप्त करने और मामलों की सरकारी निगरानी सुनिश्चित करने का अधिकार देता है। जागरूकता अभियान, कानूनी सहायता और समर्थन सेवाएं अत्याचारों को रोकने, समानता को बढ़ावा देने और अनुसूचित जातियों और अनुसूचित जनजातियों के अधिकारों की सुरक्षा में मदद करती हैं।'
+        },
+        te: {
+            title: 'జాతి వివక్షకు వ్యతిరేకంగా రక్షణ',
+            description: 'ఎస్సీ/ఎస్టీ (అట్రాసిటీ నివారణ) చట్టం జాతి ఆధారిత వివక్ష, వేధింపులు మరియు హింసకు కఠినమైన శిక్షలను అందిస్తుంది. ఇది బాధితులకు అధికారులను సంప్రదించడానికి, న్యాయం పొందడానికి మరియు కేసులపై ప్రభుత్వ మానిటరింగ్ ను నిర్ధారించడానికి సాధికారత కల్పిస్తుంది. అవగాహన ప్రచారాలు, చట్టపరమైన సహాయం మరియు మద్దతు సేవలు అఘాతాలను నివారించడానికి, సమానత్వాన్ని ప్రోత్సహించడానికి మరియు షెడ్యూల్డ్ కాస్టులు మరియు షెడ్యూల్డ్ ట్రైబ్స్ హక్కులను రక్షించడంలో సహాయపడతాయి.'
+        }
+    }
+},
+
+    // Aadhaar Enrollment & Updates
+{ 
+    icon: 'id-card', 
+    title: 'Aadhaar Enrollment & Updates', 
+    description: 'Apply for a new Aadhaar or update existing details such as name, address, date of birth, or mobile number at authorized centers.', 
+    category: 'aadhaar',
+    action: { text: 'UIDAI Portal', link: 'https://uidai.gov.in/' },
+    translations: {
+        hi: {
+            title: 'आधार पंजीकरण और अपडेट',
+            description: 'नया आधार आवेदन करें या नाम, पता, जन्म तिथि या मोबाइल नंबर जैसी मौजूदा जानकारी को अधिकृत केंद्रों पर अपडेट करें।'
+        },
+        te: {
+            title: 'ఆధార్ నమోదు & అప్‌డేట్',
+            description: 'క్రొత్త ఆధార్ కోసం దరఖాస్తు చేయండి లేదా పేర, చిరునామా, జన్మతేదీ, మొబైల్ నంబర్ వంటి వివరాలను అప్‌డేట్ చేయండి.'
+        }
+    }
+},
+
+// Aadhaar Authentication & Security
+{ 
+    icon: 'shield-alt', 
+    title: 'Aadhaar Authentication & Security', 
+    description: 'Ensure your Aadhaar is used securely for authentication purposes and report any misuse immediately.', 
+    category: 'aadhaar',
+    action: { text: 'Report Misuse', phone: '1947' },
+    translations: {
+        hi: {
+            title: 'आधार प्रमाणीकरण और सुरक्षा',
+            description: 'सुनिश्चित करें कि आपका आधार प्रमाणीकरण के लिए सुरक्षित रूप से उपयोग किया जा रहा है और किसी भी दुरुपयोग की तुरंत रिपोर्ट करें।'
+        },
+        te: {
+            title: 'ఆధార్ ధృవీకరణ & భద్రత',
+            description: 'ధృవీకరణ కోసం మీ ఆధార్ సురక్షితంగా ఉపయోగించబడిందో చూసుకోండి మరియు దుర్వినియోగం అయితే వెంటనే తెలియజేయండి.'
+        }
+    }
+},
+
+// Linking Mobile Number with Aadhaar
+{ 
+    icon: 'mobile-alt', 
+    title: 'Link Mobile with Aadhaar', 
+    description: 'Link your mobile number with Aadhaar for OTP-based services and digital authentication.', 
+    category: 'aadhaar',
+    action: { text: 'Link Mobile', link: 'https://uidai.gov.in/my-aadhaar/update-aadhaar.html' },
+    translations: {
+        hi: {
+            title: 'मोबाइल को आधार से लिंक करें',
+            description: 'OTP आधारित सेवाओं और डिजिटल प्रमाणीकरण के लिए अपने मोबाइल नंबर को आधार से लिंक करें।'
+        },
+        te: {
+            title: 'మొబైల్ ను ఆధార్ తో లింక్ చేయండి',
+            description: 'OTP ఆధారిత సేవల కోసం మరియు డిజిటల్ ధృవీకరణ కోసం మీ మొబైల్ నంబర్ ను ఆధార్ తో లింక్ చేయండి.'
+        }
+    }
+},
+
+// Aadhaar for Government Schemes
+{ 
+    icon: 'hand-holding-usd', 
+    title: 'Aadhaar for Government Schemes', 
+    description: 'Use Aadhaar to avail benefits of various government welfare schemes and subsidies securely.', 
+    category: 'aadhaar',
+    action: { text: 'Scheme Details', link: 'https://uidai.gov.in/my-aadhaar/your-aadhaar.html' },
+    translations: {
+        hi: {
+            title: 'सरकारी योजनाओं के लिए आधार',
+            description: 'विभिन्न सरकारी कल्याण योजनाओं और सब्सिडी के लाभ सुरक्षित रूप से प्राप्त करने के लिए आधार का उपयोग करें।'
+        },
+        te: {
+            title: 'ప్రభుత్వ పథకాల కోసం ఆధార్',
+            description: 'విభిన్న ప్రభుత్వ సంక్షేమ పథకాలు మరియు సబ్‌సిడీల లాభాలను సురక్షితంగా పొందడానికి ఆధార్ ఉపయోగించండి.'
+        }
+    }
+},
+
+// Public Distribution System (PDS)
+{ 
+    icon: 'shopping-basket', 
+    title: 'Public Distribution System (PDS)', 
+    description: 'PDS provides essential food grains like rice, wheat, and sugar at subsidized rates to eligible families to ensure food security.', 
+    category: 'food',
+    action: { text: 'PDS Portal', link: 'https://epds.nic.in/' },
+    translations: {
+        hi: {
+            title: 'सार्वजनिक वितरण प्रणाली (PDS)',
+            description: 'PDS पात्र परिवारों को चावल, गेहूं और चीनी जैसी आवश्यक अनाज सब्सिडी दरों पर प्रदान करती है ताकि खाद्य सुरक्षा सुनिश्चित हो सके।'
+        },
+        te: {
+            title: 'పబ్లిక్ డిస్ట్రిబ్యూషన్ సిస్టమ్ (PDS)',
+            description: 'PDS అర్హత కలిగిన కుటుంబాలకు బియ్యం, గోధుమ, చక్కెర వంటి ముఖ్యమైన ధాన్యాలను సబ్సిడీ రేట్లలో అందిస్తుంది, భోజన భద్రతను నిర్ధారిస్తుంది.'
+        }
+    }
+},
+
+// Midday Meal Scheme
+{ 
+    icon: 'restaurant', 
+    title: 'Midday Meal for School Children', 
+    description: 'The Midday Meal Scheme provides free meals to children in government and government-aided schools to improve nutrition, encourage attendance, and reduce dropout rates.', 
+    category: 'food',
+    action: { text: 'Scheme Details', link: 'https://mdm.nic.in' },
+    translations: {
+        hi: {
+            title: 'विद्यालयीन बच्चों के लिए मध्याह्न भोजन',
+            description: 'मध्याह्न भोजन योजना सरकारी और सरकारी सहायता प्राप्त स्कूलों में बच्चों को मुफ्त भोजन प्रदान करती है।'
+        },
+        te: {
+            title: 'పాఠశాల పిల్లలకు మిడ్డే మీట్',
+            description: 'మిడ్డే మీల్ స్కీమ్ ప్రభుత్వ మరియు ప్రభుత్వ సహాయ పాఠశాలల్లో పిల్లలకు ఉచిత భోజనం అందిస్తుంది.'
+        }
+    }
+},
+
+// Food Safety & Nutrition
+{ 
+    icon: 'apple-alt', 
+    title: 'Food Safety & Nutrition', 
+    description: 'Ensure the food you consume is safe, nutritious, and hygienically prepared. Follow guidelines from FSSAI and local health authorities.', 
+    category: 'food',
+    action: { text: 'FSSAI Guidelines', link: 'https://www.fssai.gov.in/' },
+    translations: {
+        hi: {
+            title: 'खाद्य सुरक्षा और पोषण',
+            description: 'सुनिश्चित करें कि आपका भोजन सुरक्षित, पोषक तत्वों से भरपूर और स्वच्छ रूप से तैयार किया गया हो। FSSAI और स्थानीय स्वास्थ्य प्राधिकरण के दिशानिर्देशों का पालन करें।'
+        },
+        te: {
+            title: 'ఆహార భద్రత & పోషకాహారము',
+            description: 'మీరు తింటున్న ఆహారం సురక్షితంగా, పోషకాహారంగా మరియు శుభ్రంగా తయారు చేయబడిందని నిర్ధారించండి. FSSAI మరియు స్థానిక ఆరోగ్య అధికారుల మార్గదర్శకాలను అనుసరించండి.'
+        }
+    }
+},
+// National Health Mission (NHM)
+{ 
+    icon: 'hospital', 
+    title: 'National Health Mission (NHM)', 
+    description: 'NHM aims to provide accessible, affordable, and quality healthcare to all citizens, with a focus on rural areas, maternal and child health, and disease control.', 
+    category: 'health',
+    action: { text: 'NHM Details', link: 'https://nhm.gov.in/' },
+    translations: {
+        hi: {
+            title: 'राष्ट्रीय स्वास्थ्य मिशन (NHM)',
+            description: 'NHM सभी नागरिकों को सुलभ, किफायती और गुणवत्ता स्वास्थ्य सेवाएं प्रदान करने का लक्ष्य रखता है, विशेष रूप से ग्रामीण क्षेत्रों, मातृ एवं शिशु स्वास्थ्य, और रोग नियंत्रण पर ध्यान केंद्रित करता है।'
+        },
+        te: {
+            title: 'జాతీయ ఆరోగ్య మిషన్ (NHM)',
+            description: 'NHM అన్ని పౌరులకు సులభంగా, సరసమైన, మరియు నాణ్యత ఆరోగ్య సేవలను అందించడాన్ని లక్ష్యంగా పెట్టింది, ముఖ్యంగా గ్రామీణ ప్రాంతాలు, తల్లి మరియు శిశు ఆరోగ్యం, మరియు రోగ నియంత్రణపై దృష్టి సారిస్తుంది.'
+        }
+    }
+},
+
+// Immunization & Vaccination Programs
+{ 
+    icon: 'syringe', 
+    title: 'Immunization & Vaccination', 
+    description: 'Government programs provide free vaccines to children and adults to prevent diseases like polio, measles, and COVID-19, ensuring community health.', 
+    category: 'health',
+    action: { text: 'Vaccination Info', link: 'https://www.nhp.gov.in/' },
+    translations: {
+        hi: {
+            title: 'टीकाकरण और वैक्सीनेशन',
+            description: 'सरकारी कार्यक्रम बच्चों और वयस्कों को पोलियो, खसरा, और COVID-19 जैसी बीमारियों से बचाने के लिए मुफ्त टीके प्रदान करते हैं, जिससे समुदाय स्वास्थ्य सुनिश्चित होता है।'
+        },
+        te: {
+            title: 'రోగ నిరోధక మరియు వ్యాక్సినేషన్',
+            description: 'ప్రభుత్వ కార్యక్రమాలు పిల్లలు మరియు పెద్దలకు పోలియో, మీసిల్స్, COVID-19 వంటి వ్యాధులను నిరోధించడానికి ఉచిత వ్యాక్సిన్లు అందిస్తాయి, సముదాయ ఆరోగ్యం నిర్ధారించడానికి.'
+        }
+    }
+},
+
+// Maternal & Child Health
+{ 
+    icon: 'baby-carriage', 
+    title: 'Maternal & Child Health Programs', 
+    description: 'Programs like Janani Suraksha Yojana provide support for safe pregnancy, institutional deliveries, and postnatal care to improve maternal and child health outcomes.', 
+    category: 'health',
+    action: { text: 'Program Details', link: 'https://nhm.gov.in/index1.php?lang=1&level=1&sublinkid=109&lid=122' },
+    translations: {
+        hi: {
+            title: 'मातृत्व और शिशु स्वास्थ्य कार्यक्रम',
+            description: 'जन्मनी सुरक्षा योजना जैसी योजनाएं सुरक्षित गर्भावस्था, संस्थागत प्रसव और प्रसवोत्तर देखभाल के लिए समर्थन प्रदान करती हैं ताकि मातृत्व और शिशु स्वास्थ्य में सुधार हो।'
+        },
+        te: {
+            title: 'మాతృ & శిశు ఆరోగ్య కార్యక్రమాలు',
+            description: 'జననీ సురక్షా యోజన వంటి కార్యక్రమాలు భద్రతతో గర్భధారణ, ఆసుపత్రి డెలివరీలు మరియు ప్రసవానంతర సంరక్షణకు మద్దతు అందిస్తాయి, మాతృ & శిశు ఆరోగ్యాన్ని మెరుగుపరచడానికి.'
+        }
+    }
+},
+
+// National Mental Health Program
+{ 
+    icon: 'brain', 
+    title: 'Mental Health Programs', 
+    description: 'Programs under NMHP aim to raise awareness, provide counseling, and improve access to mental health services for prevention and treatment of mental disorders.', 
+    category: 'health',
+    action: { text: 'NMHP Details', link: 'https://nmhp.gov.in/' },
+    translations: {
+        hi: {
+            title: 'मानसिक स्वास्थ्य कार्यक्रम',
+            description: 'NMHP के तहत कार्यक्रम जागरूकता बढ़ाने, परामर्श प्रदान करने और मानसिक विकारों की रोकथाम और उपचार के लिए मानसिक स्वास्थ्य सेवाओं की पहुंच को सुधारने का लक्ष्य रखते हैं।'
+        },
+        te: {
+            title: 'మానసిక ఆరోగ్య కార్యక్రమాలు',
+            description: 'NMHP కింద కార్యక్రమాలు జాగ్రత్త కల్పించడం, కౌన్సెలింగ్ అందించడం మరియు మానసిక రుగ్మతలను నివారించడానికి మరియు చికిత్స కోసం మానసిక ఆరోగ్య సేవలకు సులభంగా ప్రాప్తిని మెరుగుపరచడం లక్ష్యంగా పెట్టాయి.'
+        }
+    }
+},
+
+// Employment Exchange Services
+{ 
+    icon: 'briefcase', 
+    title: 'Employment Exchange Services', 
+    description: 'Government-run employment exchanges help job seekers find suitable employment opportunities, provide career counseling, and facilitate skill development programs.', 
+    category: 'work',
+    action: { text: 'Employment Portal', link: 'https://www.ncs.gov.in/' },
+    translations: {
+        hi: {
+            title: 'रोजगार विनिमय सेवाएँ',
+            description: 'सरकारी रोजगार विनिमय नौकरी चाहने वालों को उपयुक्त रोजगार अवसर खोजने में मदद करते हैं, करियर काउंसलिंग प्रदान करते हैं और कौशल विकास कार्यक्रमों की सुविधा प्रदान करते हैं।'
+        },
+        te: {
+            title: 'రोज్‌గార్ ఎక్స్ఛేంజ్ సేవలు',
+            description: 'ప్రభుత్వ ఉద్యోగ మార్పిడి కేంద్రాలు ఉద్యోగార్ధులకు తగిన ఉద్యోగ అవకాశాలను కనుగొనడంలో సహాయపడతాయి, కెరీర్ సలహాలు అందిస్తాయి, మరియు నైపుణ్య అభివృద్ధి కార్యక్రమాలను సౌకర్యవంతం చేస్తాయి.'
+        }
+    }
+},
+
+// MGNREGA – Guaranteed Employment
+{ 
+    icon: 'hands-helping', 
+    title: 'MGNREGA – Guaranteed Employment', 
+    description: 'Mahatma Gandhi National Rural Employment Guarantee Act provides at least 100 days of wage employment per year to rural households, improving livelihood security.', 
+    category: 'work',
+    action: { text: 'Scheme Details', link: 'https://nrega.nic.in/' },
+    translations: {
+        hi: {
+            title: 'MGNREGA – गारंटीड रोजगार',
+            description: 'महात्मा गांधी राष्ट्रीय ग्रामीण रोजगार गारंटी अधिनियम ग्रामीण परिवारों को प्रति वर्ष कम से कम 100 दिन का वेतन रोजगार प्रदान करता है, जिससे आजीविका सुरक्षा में सुधार होता है।'
+        },
+        te: {
+            title: 'MGNREGA – హామీ ఉద్యోగం',
+            description: 'మహాత్మా గాంధీ నేషనల్ రూరల్ ఎంప్లాయ్‌మెంట్ గ్యారంటీ చట్టం గ్రామీణ కుటుంబాలకు సంవత్సరానికి కనీసం 100 రోజుల జీత ఉద్యోగం అందిస్తుంది, జీవనాధార భద్రతను మెరుగుపరుస్తుంది.'
+        }
+    }
+},
+
+// Skill Development & Training Programs
+{ 
+    icon: 'chalkboard-teacher', 
+    title: 'Skill Development & Training', 
+    description: 'Various government initiatives provide vocational training, skill enhancement, and certifications to improve employability and career growth.', 
+    category: 'work',
+    action: { text: 'Skill India Portal', link: 'https://www.skillindia.gov.in/' },
+    translations: {
+        hi: {
+            title: 'कौशल विकास और प्रशिक्षण',
+            description: 'विभिन्न सरकारी पहलें व्यावसायिक प्रशिक्षण, कौशल संवर्धन और प्रमाणपत्र प्रदान करती हैं ताकि रोजगार क्षमता और करियर विकास में सुधार हो सके।'
+        },
+        te: {
+            title: 'నైపుణ్య అభివృద్ధి & శిక్షణ',
+            description: 'వివిధ ప్రభుత్వ కార్యక్రమాలు వృత్తి శిక్షణ, నైపుణ్య అభివృద్ధి మరియు సర్టిఫికేషన్ అందిస్తాయి, దీని ద్వారా ఉద్యోగావకాశాలు మరియు కెరీర్ వృద్ధి మెరుగుపడుతుంది.'
+        }
+    }
+},
+
+// Labour Rights & Protection
+{ 
+    icon: 'gavel', 
+    title: 'Labour Rights & Protection', 
+    description: 'Workers are protected under labour laws which ensure minimum wages, safe working conditions, social security, and grievance redressal mechanisms.', 
+    category: 'work',
+    action: { text: 'Labour Ministry', link: 'https://labour.gov.in/' },
+    translations: {
+        hi: {
+            title: 'श्रमिक अधिकार और सुरक्षा',
+            description: 'श्रम कानूनों के तहत श्रमिकों को न्यूनतम मजदूरी, सुरक्षित कार्यस्थल, सामाजिक सुरक्षा और शिकायत निवारण की सुविधा मिलती है।'
+        },
+        te: {
+            title: 'శ్రామిక హక్కులు & రక్షణ',
+            description: 'కూలీలను కనీస జీతాలు, సురక్షిత పని పరిస్థితులు, సామాజిక భద్రత మరియు ఫిర్యాదు పరిష్కారం యంత్రాంగం ద్వారా రక్షించబడతాయి.'
+        }
+    }
+},
+// Right to Information (RTI)
+{ 
+    icon: 'info-circle', 
+    title: 'Right to Information (RTI)', 
+    description: 'Citizens can seek information from public authorities under the RTI Act to promote transparency and accountability in government functioning.', 
+    category: 'legal',
+    action: { text: 'RTI Portal', link: 'https://rti.gov.in/' },
+    translations: {
+        hi: {
+            title: 'सूचना का अधिकार (RTI)',
+            description: 'नागरिक RTI अधिनियम के तहत सार्वजनिक अधिकारियों से जानकारी प्राप्त कर सकते हैं, जिससे सरकारी कार्यों में पारदर्शिता और जवाबदेही बढ़ती है।'
+        },
+        te: {
+            title: 'సమాచారం హక్కు (RTI)',
+            description: 'నాగరికులు ప్రభుత్వ కార్యాలయాల నుండి సమాచారాన్ని RTI చట్టం ప్రకారం కోరవచ్చు, ఇది పారదర్శకత మరియు బాధ్యతను పెంచుతుంది.'
+        }
+    }
+},
+
+// Protection against Domestic Violence
+{ 
+    icon: 'home', 
+    title: 'Protection against Domestic Violence', 
+    description: 'The Protection of Women from Domestic Violence Act provides legal remedies, protection orders, and support for women facing domestic abuse.', 
+    category: 'legal',
+    action: { text: 'Helpline', phone: '181' },
+    translations: {
+        hi: {
+            title: 'घरेलू हिंसा से सुरक्षा',
+            description: 'महिलाओं को घरेलू हिंसा से सुरक्षा अधिनियम कानूनी उपाय, सुरक्षा आदेश और समर्थन प्रदान करता है।'
+        },
+        te: {
+            title: 'గృహ హింస నుండి రక్షణ',
+            description: 'గృహ హింస నుండి మహిళలను రక్షించడానికి చట్టం, రక్షణ ఆదేశాలు మరియు సహాయం అందిస్తుంది.'
+        }
+    }
+},
+
+// SC/ST (Prevention of Atrocities) Act
+{ 
+    icon: 'gavel', 
+    title: 'Protection against Caste Discrimination', 
+    description: 'SC/ST (Prevention of Atrocities) Act provides strict punishments for caste-based discrimination and violence.', 
+    category: 'legal',
+    action: { text: 'National SC/ST Helpline', phone: '18004256666' },
+    translations: {
+        hi: {
+            title: 'जाति आधारित भेदभाव से सुरक्षा',
+            description: 'SC/ST अत्याचार निवारण अधिनियम जाति आधारित भेदभाव और हिंसा के लिए सख्त दंड प्रदान करता है।'
+        },
+        te: {
+            title: 'జాతి వివక్ష నుండి రక్షణ',
+            description: 'SC/ST (అత్యాచారాల నివారణ) చట్టం జాతి ఆధారిత వివక్ష మరియు హింసకు కఠిన శిక్షలను అందిస్తుంది.'
+        }
+    }
+},
+
+// Consumer Protection Rights
+{ 
+    icon: 'balance-scale', 
+    title: 'Consumer Protection Rights', 
+    description: 'The Consumer Protection Act ensures fair trade practices, safeguards consumer interests, and provides legal remedies for grievances related to goods and services.', 
+    category: 'legal',
+    action: { text: 'Consumer Helpline', phone: '1800114000' },
+    translations: {
+        hi: {
+            title: 'उपभोक्ता संरक्षण अधिकार',
+            description: 'उपभोक्ता संरक्षण अधिनियम उचित व्यापार प्रथाओं को सुनिश्चित करता है, उपभोक्ता हितों की सुरक्षा करता है और वस्त्र एवं सेवाओं से संबंधित शिकायतों के लिए कानूनी उपाय प्रदान करता है।'
+        },
+        te: {
+            title: 'గ్రాహక రక్షణ హక్కులు',
+            description: 'గ్రాహక రక్షణ చట్టం సక్రమమైన వాణిజ్య ప్రథమాలను నిర్ధారిస్తుంది, గ్రాహక ప్రయోజనాలను రక్షిస్తుంది మరియు వస్తువులు మరియు సేవల సమస్యలకు చట్టపరమైన పరిష్కారాలు అందిస్తుంది.'
+        }
+    }
+},
+
+// Emergency Police Helpline
+{ 
+    icon: 'phone-alt', 
+    title: 'Police Emergency Helpline', 
+    description: 'Call this number in case of emergencies requiring immediate police assistance, such as crimes, accidents, or threats to life.', 
+    category: 'police',
+    action: { text: 'Call Now', phone: '100' },
+    translations: {
+        hi: {
+            title: 'पुलिस आपातकालीन हेल्पलाइन',
+            description: 'अपराध, दुर्घटनाओं या जीवन को खतरे में डालने जैसी आपात स्थितियों में तुरंत पुलिस सहायता के लिए इस नंबर पर कॉल करें।'
+        },
+        te: {
+            title: 'పోలీస్ అత్యవసర హెల్ప్‌లైన్',
+            description: 'ప్రమాదాలు, ప్రమాదాలు లేదా ప్రాణాలకు ముప్పు ఉన్న పరిస్థితులలో వెంటనే పోలీస్ సహాయం కోసం ఈ నంబర్ ను కాల్ చేయండి.'
+        }
+    }
+},
+
+// Women’s Safety Helpline
+{ 
+    icon: 'female', 
+    title: 'Women’s Safety Helpline', 
+    description: 'Dedicated helpline to report harassment, abuse, or threats against women, ensuring timely police intervention and support.', 
+    category: 'police',
+    action: { text: 'Call Helpline', phone: '1091' },
+    translations: {
+        hi: {
+            title: 'महिला सुरक्षा हेल्पलाइन',
+            description: 'महिलाओं के खिलाफ उत्पीड़न, दुर्व्यवहार या धमकियों की रिपोर्ट करने के लिए समर्पित हेल्पलाइन, त्वरित पुलिस हस्तक्षेप और सहायता सुनिश्चित करती है।'
+        },
+        te: {
+            title: 'మహిళల భద్రత హెల్ప్‌లైన్',
+            description: 'మహిళలకు ఎదురైన వేధనలు, దుర్వ్యవహారాలు లేదా బెదిరింపుల గురించి రిపోర్ట్ చేసేందుకు ప్రత్యేక హెల్ప్‌లైన్, సమయోచిత పోలీస్ జోక్యం మరియు సహాయం అందిస్తుంది.'
+        }
+    }
+},
+
+// Traffic Police Assistance
+{ 
+    icon: 'car', 
+    title: 'Traffic Police Assistance', 
+    description: 'For reporting traffic violations, accidents, or seeking help in traffic-related emergencies, contact the local traffic police.', 
+    category: 'police',
+    action: { text: 'Traffic Helpline', phone: '103' },
+    translations: {
+        hi: {
+            title: 'ट्रैफिक पुलिस सहायता',
+            description: 'ट्रैफिक उल्लंघनों, दुर्घटनाओं या ट्रैफिक संबंधी आपात स्थितियों की रिपोर्ट करने के लिए स्थानीय ट्रैफिक पुलिस से संपर्क करें।'
+        },
+        te: {
+            title: 'ట్రాఫిక్ పోలీస్ సహాయం',
+            description: 'ట్రాఫిక్ ఉల్లంఘనలు, ప్రమాదాలు లేదా ట్రాఫిక్ సంబంధిత అత్యవసర పరిస్థితులలో సహాయం కోరడానికి స్థానిక ట్రాఫిక్ పోలీస్ ను సంప్రదించండి.'
+        }
+    }
+},
+
+// Cybercrime Reporting
+{ 
+    icon: 'laptop-code', 
+    title: 'Report Cybercrime', 
+    description: 'Report online fraud, hacking, identity theft, or other cybercrimes to authorities for investigation and legal action.', 
+    category: 'police',
+    action: { text: 'Cybercrime Portal', link: 'https://cybercrime.gov.in/' },
+    translations: {
+        hi: {
+            title: 'साइबर अपराध रिपोर्टिंग',
+            description: 'ऑनलाइन धोखाधड़ी, हैकिंग, पहचान की चोरी या अन्य साइबर अपराधों की रिपोर्ट जांच और कानूनी कार्रवाई के लिए अधिकारियों को करें।'
+        },
+        te: {
+            title: 'సైబర్ క్రైమ్ రిపోర్ట్ చేయండి',
+            description: 'ఆన్‌లైన్ మోసాలు, హ్యాకింగ్, గుర్తింపు దొంగతనం లేదా ఇతర సైబర్ నేరాలను అధికారులకు విచారణ మరియు చట్టపరమైన చర్య కోసం నివేదించండి.'
+        }
+    }
+},
+
+// Protection against Domestic Violence
+{ 
+    icon: 'female', 
+    title: 'Protection from Domestic Violence', 
+    description: 'Women have the right to protection and legal support against domestic abuse.', 
+    category: 'womens-rights',
+    action: { text: 'Helpline', phone: '181' },
+    translations: {
+        hi: {
+            title: 'घरेलू हिंसा से सुरक्षा',
+            description: 'महिलाओं को घरेलू हिंसा से सुरक्षा और कानूनी सहायता का अधिकार है।'
+        },
+        te: {
+            title: 'గృహ హింస నుండి రక్షణ',
+            description: 'మహిళలకు గృహ హింస నుండి రక్షణ మరియు చట్టపరమైన సహాయం ఉంది.'
+        }
+    }
+},
+// Child Rights
+{ 
+    icon: 'child', 
+    title: 'Child Rights', 
+    description: 'Children have the right to education, protection from abuse, and opportunities for overall development.', 
+    category: 'legal',
+    action: { text: 'Child Helpline', phone: '1098' },
+    translations: {
+        hi: {
+            title: 'बाल अधिकार',
+            description: 'बच्चों को शिक्षा, उत्पीड़न से सुरक्षा और समग्र विकास के अवसरों का अधिकार है।'
+        },
+        te: {
+            title: 'బాల హక్కులు',
+            description: 'పిల్లలకు విద్య, వేధనల నుండి రక్షణ మరియు మొత్తం అభివృద్ధి అవకాశాలు హక్కుగా ఉన్నాయి.'
+        }
+    }
+},
+
+// Property Rights
+{ 
+    icon: 'home', 
+    title: 'Property Rights', 
+    description: 'Citizens have the right to own, inherit, and transfer property, protected under law.', 
+    category: 'legal',
+    action: { text: 'Legal Aid', phone: '18004195455' },
+    translations: {
+        hi: {
+            title: 'संपत्ति अधिकार',
+            description: 'नागरिकों को संपत्ति का मालिकाना, उत्तराधिकार और हस्तांतरण करने का अधिकार है, जो कानून द्वारा सुरक्षित है।'
+        },
+        te: {
+            title: 'సొంత హక్కులు',
+            description: 'పౌరులకు ఆస్తిని కలిగి ఉండటం, వారసత్వం పొందడం మరియు బదిలీ చేసుకోవడం హక్కుగా ఉంది, చట్టం ద్వారా రక్షించబడింది.'
+        }
+    }
+},
+
+// Labour Rights
+{ 
+    icon: 'users', 
+    title: 'Labour Rights', 
+    description: 'Workers are entitled to fair wages, safe working conditions, social security, and protection against exploitation.', 
+    category: 'legal',
+    action: { text: 'Labour Helpline', phone: '1800114000' },
+    translations: {
+        hi: {
+            title: 'श्रमिक अधिकार',
+            description: 'श्रमिकों को उचित वेतन, सुरक्षित कार्यस्थल, सामाजिक सुरक्षा और शोषण से सुरक्षा का अधिकार है।'
+        },
+        te: {
+            title: 'కూలీ హక్కులు',
+            description: 'ఉద్యోగులకు సమాన జీతాలు, సురక్షిత పని పరిస్థితులు, సామాజిక భద్రత మరియు దోపిడీ నుండి రక్షణ హక్కుగా ఉన్నాయి.'
+        }
+    }
+},
+
+
+// Right to Information (RTI)
+{ 
+    icon: 'info-circle', 
+    title: 'Right to Information', 
+    description: 'Citizens can request information from public authorities to ensure transparency and accountability.', 
+    category: 'legal',
+    action: { text: 'RTI Portal', link: 'https://rti.gov.in/' },
+    translations: {
+        hi: {
+            title: 'सूचना का अधिकार',
+            description: 'नागरिक पारदर्शिता और जवाबदेही सुनिश्चित करने के लिए सार्वजनिक अधिकारियों से जानकारी प्राप्त कर सकते हैं।'
+        },
+        te: {
+            title: 'సమాచారం హక్కు',
+            description: 'నాగరికులు పారదర్శకత మరియు బాధ్యతను నిర్ధారించడానికి ప్రభుత్వ అధికారుల నుంచి సమాచారం కోరవచ్చు.'
+        }
+    }
+},
+// Land Dispute Resolution
+{ 
+    icon: 'landmark', 
+    title: 'Land Dispute Rights', 
+    description: 'Citizens have the right to resolve land disputes through legal channels, including revenue courts and tribunals.', 
+    category: 'legal',
+    action: { text: 'Land Dispute Help', phone: '18004195455' },
+    translations: {
+        hi: {
+            title: 'भूमि विवाद अधिकार',
+            description: 'नागरिकों को भूमि विवादों को कानूनी माध्यमों, जैसे राजस्व न्यायालय और ट्रिब्यूनल, के जरिए सुलझाने का अधिकार है।'
+        },
+        te: {
+            title: 'భూమి వివాద హక్కులు',
+            description: 'పౌరులు భూమి వివాదాలను చట్టపరమైన మార్గాల ద్వారా, రెవెన్యూ కోర్టులు మరియు ట్రిబ్యూనల్స్ సహా, పరిష్కరించుకునే హక్కు కలిగి ఉంటారు.'
+        }
+    }
+},
+// Consumer Protection Rights
+{ 
+    icon: 'balance-scale', // icon to show in the app
+    title: 'Consumer Rights', // the title that will appear
+    description: 'Consumers have the right to safe products, fair trade, and legal remedies for grievances related to goods and services.', 
+    // this is the short explanation of the right
+    category: 'legal', // this groups it under legal rights
+    action: { text: 'Consumer Helpline', phone: '1800114000' }, 
+    // a button or link people can click/call for help
+    translations: { 
+        hi: { 
+            title: 'उपभोक्ता अधिकार', // title in Hindi
+            description: 'उपभोक्ताओं को सुरक्षित उत्पाद, निष्पक्ष व्यापार और वस्तुओं और सेवाओं से संबंधित शिकायतों के लिए कानूनी उपाय का अधिकार है।' // description in Hindi
+        }, 
+        te: { 
+            title: 'గ్రాహక హక్కులు', // title in Telugu
+            description: 'గ్రాహకులకు సురక్షిత ఉత్పత్తులు, సక్రమమైన వాణిజ్యం మరియు వస్తువులు, సేవల సమస్యలకు చట్టపరమైన పరిష్కారాలు హక్కుగా ఉన్నాయి.' // description in Telugu
+        } 
+    } 
+},
+// Protection from Atrocities
+{ 
+    icon: 'gavel', 
+    title: 'Protection from Atrocities', 
+    description: 'SC/ST individuals are protected from caste-based discrimination and violence under the SC/ST (Prevention of Atrocities) Act.', 
+    category: 'scst',
+    action: { text: 'Helpline', phone: '18004256666' },
+    translations: {
+        hi: {
+            title: 'अत्याचार से सुरक्षा',
+            description: 'SC/ST व्यक्तियों को जाति आधारित भेदभाव और हिंसा से SC/ST (अत्याचार निवारण) अधिनियम के तहत सुरक्षा प्राप्त है।'
+        },
+        te: {
+            title: 'అత్యాచారాల నుండి రక్షణ',
+            description: 'SC/ST వ్యక్తులు జాతి ఆధారిత వివక్ష మరియు హింస నుండి SC/ST (అత్యాచార నివారణ) చట్టం ప్రకారం రక్షించబడ్డారు.'
+        }
+    }
+},
+
+// Reservation in Education
+{ 
+    icon: 'school', 
+    title: 'Education Reservation', 
+    description: 'SC/ST students are entitled to reserved seats in schools, colleges, and universities to ensure educational opportunities.', 
+    category: 'scst',
+    action: { text: 'Education Helpline', phone: '1800112111' },
+    translations: {
+        hi: {
+            title: 'शिक्षा में आरक्षण',
+            description: 'SC/ST छात्रों को स्कूलों, कॉलेजों और विश्वविद्यालयों में आरक्षित सीटें मिलने का अधिकार है।'
+        },
+        te: {
+            title: 'విద్యలో రిజర్వేషన్',
+            description: 'SC/ST విద్యార్థులకు పాఠశాలలు, కళాశాలలు మరియు విశ్వవిద్యాలయాలలో రిజర్వ్ సీట్లు ఉంటాయి.'
+        }
+    }
+},
+
+// Reservation in Employment
+{ 
+    icon: 'briefcase', 
+    title: 'Employment Reservation', 
+    description: 'SC/ST individuals are eligible for reserved positions in government jobs to promote social equality and empowerment.', 
+    category: 'scst',
+    action: { text: 'Employment Helpline', phone: '1800112111' },
+    translations: {
+        hi: {
+            title: 'रोजगार में आरक्षण',
+            description: 'SC/ST व्यक्तियों को सरकारी नौकरी में आरक्षित पदों के लिए पात्रता प्राप्त है।'
+        },
+        te: {
+            title: 'ఉద్యోగంలో రిజర్వేషన్',
+            description: 'SC/ST వ్యక్తులు ప్రభుత్వ ఉద్యోగాల్లో రిజర్వ్ పొజిషన్ల కోసం అర్హులుగా ఉంటారు.'
+        }
+    }
+},
+
+// Legal Aid for SC/ST
+{ 
+    icon: 'balance-scale', 
+    title: 'Legal Aid for SC/ST', 
+    description: 'SC/ST individuals can access legal aid and support for cases involving discrimination, violence, or atrocities.', 
+    category: 'scst',
+    action: { text: 'Legal Helpline', phone: '18004195455' },
+    translations: {
+        hi: {
+            title: 'SC/ST के लिए कानूनी सहायता',
+            description: 'SC/ST व्यक्तियों को भेदभाव, हिंसा या अत्याचार से जुड़े मामलों में कानूनी सहायता प्राप्त होती है।'
+        },
+        te: {
+            title: 'SC/ST కోసం చట్టపరమైన సహాయం',
+            description: 'SC/ST వ్యక్తులు వివక్ష, హింస లేదా అత్యాచారాల కేసులలో చట్టపరమైన సహాయం పొందవచ్చు.'
+        }
+    }
+},
+// Right to Information - Access to Records
+{ 
+    icon: 'folder-open', 
+    title: 'Access to Records', 
+    description: 'Citizens can request copies of government records to ensure transparency and accountability.', 
+    category: 'legal',
+    action: { text: 'RTI Portal', link: 'https://rti.gov.in/' },
+    translations: {
+        hi: {
+            title: 'रिकॉर्ड तक पहुंच का अधिकार',
+            description: 'नागरिक पारदर्शिता और जवाबदेही सुनिश्चित करने के लिए सरकारी रिकॉर्ड की प्रतियां प्राप्त कर सकते हैं।'
+        },
+        te: {
+            title: 'రికార్డ్స్‌కి ప్రవేశ హక్కు',
+            description: 'నాగరికులు పారదర్శకత మరియు బాధ్యతను నిర్ధారించడానికి ప్రభుత్వ రికార్డ్స్ యొక్క ప్రతులు కోరవచ్చు.'
+        }
+    }
+},
+
+// Right to Information - Timely Response
+{ 
+    icon: 'clock', 
+    title: 'Timely Response', 
+    description: 'Public authorities must respond to RTI requests within the time limits prescribed by law.', 
+    category: 'legal',
+    action: { text: 'RTI Portal', link: 'https://rti.gov.in/' },
+    translations: {
+        hi: {
+            title: 'समय पर जवाब पाने का अधिकार',
+            description: 'सार्वजनिक अधिकारियों को कानून द्वारा निर्धारित समय सीमा के भीतर RTI अनुरोधों का जवाब देना अनिवार्य है।'
+        },
+        te: {
+            title: 'సకాలంలో ప్రతిస్పందన హక్కు',
+            description: 'ప్రజా అధికారులు చట్టం ప్రకారం RTI అభ్యర్థనలకు సమయానుకూలంగా స్పందించాలి.'
+        }
+    }
+},
+
+// Right to Information - Appeal and Complaint
+{ 
+    icon: 'gavel', 
+    title: 'Appeal & Complaint', 
+    description: 'Citizens can file appeals or complaints if their RTI requests are denied or not properly addressed.', 
+    category: 'legal',
+    action: { text: 'RTI Portal', link: 'https://rti.gov.in/' },
+    translations: {
+        hi: {
+            title: 'अपील और शिकायत का अधिकार',
+            description: 'यदि RTI अनुरोध अस्वीकृत या सही तरीके से संबोधित नहीं किए जाते हैं तो नागरिक अपील या शिकायत दर्ज कर सकते हैं।'
+        },
+        te: {
+            title: 'అపీల్స్ & ఫిర్యాదు హక్కు',
+            description: 'RTI అభ్యర్థనలు నిరాకరించబడ్డా లేదా సరైన విధంగా పరిష్కరించబడకపోయినపుడు নাগరికులు అపీల్ లేదా ఫిర్యాదు చేయవచ్చు.'
+        }
+    }
+},
+
+// Right to Information - No Obligation for Personal Disclosure
+{ 
+    icon: 'user-secret', 
+    title: 'Protection of Personal Information', 
+    description: 'RTI requests cannot force disclosure of personal information of others without their consent.', 
+    category: 'legal',
+    action: { text: 'RTI Portal', link: 'https://rti.gov.in/' },
+    translations: {
+        hi: {
+            title: 'व्यक्तिगत जानकारी की सुरक्षा',
+            description: 'अन्य लोगों की व्यक्तिगत जानकारी बिना उनकी सहमति के RTI अनुरोधों में उजागर नहीं की जा सकती।'
+        },
+        te: {
+            title: 'వ్యక్తిగత సమాచార రక్షణ',
+            description: 'ఇతరుల వ్యక్తిగత సమాచారం వారి అనుమతి లేకుండా RTI అభ్యర్థనలలో వెల్లడించకూడదు.'
+        }
+    }
+},
+
+
+
+  // Add more rights as needed...
+        ];
+
+        function renderRights() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const category = document.getElementById('categorySelect').value;
+            const language = document.getElementById('languageSelect').value;
+            
+            const container = document.getElementById('rightsList');
+            container.innerHTML = '';
+            
+            const filteredRights = rights.filter(right => {
+                const titleText = language === 'en' ? right.title : (right.translations[language]?.title || right.title);
+                const descText = language === 'en' ? right.description : (right.translations[language]?.description || right.description);
+                
+                const matchesSearch = titleText.toLowerCase().includes(searchText) || 
+                                    descText.toLowerCase().includes(searchText);
+                const matchesCategory = !category || right.category === category;
+                return matchesSearch && matchesCategory;
+            });
+
+            if (filteredRights.length === 0) {
+                container.innerHTML = `
+                    <div class="no-results">
+                        <h3>No rights found</h3>
+                        <p>Try changing your search or filters</p>
+                    </div>
+                `;
+                return;
+            }
+
+            filteredRights.forEach(right => {
+                const card = document.createElement('div');
+                card.className = `right-card ${right.category}`;
+                card.style.borderLeftColor = `var(--${right.category})`;
+                
+                const displayTitle = language === 'en' ? right.title : 
+                                   (right.translations[language]?.title || right.title);
+                const displayDesc = language === 'en' ? right.description : 
+                                  (right.translations[language]?.description || right.description);
+                
+                card.innerHTML = `
+                    <div class="right-icon material-icons">${right.icon}</div>
+                    <div class="right-category">${right.category.replace(/_/g, ' ')}</div>
+                    <div class="right-title">${displayTitle}
+                       
+                    </div>
+                    <div class="right-description">${displayDesc}</div>
+                    <div class="card-actions">
+                        
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function handleAction(contact) {
+            if(contact.startsWith('http')) {
+                window.open(contact, '_blank');
+            } else {
+                window.location.href = `tel:${contact}`;
+            }
+        }
+
+        function speakRight(text, lang) {
+            if ('speechSynthesis' in window) {
+                const speech = new SpeechSynthesisUtterance();
+                speech.text = text;
+                speech.lang = lang === 'en' ? 'en-IN' : `${lang}-IN`;
+                
+                // Set Indian voice if available
+                const voices = window.speechSynthesis.getVoices();
+                const indianVoice = voices.find(v => v.lang.includes(lang) && v.lang.includes('IN'));
+                if (indianVoice) speech.voice = indianVoice;
+                
+                window.speechSynthesis.speak(speech);
+            } else {
+                alert('Text-to-speech not supported in your browser');
+            }
+        }
+
+        // Initialize speech synthesis voices
+        window.speechSynthesis.onvoiceschanged = function() {
+            renderRights();
+        };
+
+        // Set up event listeners
+        document.getElementById('searchInput').addEventListener('input', renderRights);
+        document.getElementById('categorySelect').addEventListener('change', renderRights);
+        document.getElementById('languageSelect').addEventListener('change', renderRights);
+
+        // Initial render
+        window.onload = renderRights;
+
+        const langSelector = document.getElementById('languageSelector');
+
+    langSelector.addEventListener('change', function () {
+        const selectedLang = langSelector.value;
+        localStorage.setItem("selectedLanguage", selectedLang);
+        updateLanguage(selectedLang);
+    });
+
+    function updateLanguage(lang) {
+        Object.keys(translations[lang]).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.innerText = translations[lang][id];
+        });
+    }
+
+    const savedLang = localStorage.getItem("selectedLanguage") || "en";
+    langSelector.value = savedLang;
+    updateLanguage(savedLang);
+    </script>
+    <script src="language.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LegalEase - Know Your Rights</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <i class="fas fa-balance-scale"></i>
+        <h1>LegalEase</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a id="navHome" href="index.html">Home</a></li>
+            <li><a id="navRights" href="rights.html">Know Your Rights</a></li>
+            <li><a id="navEmergency" href="emergency.html">Emergency Help</a></li>
+            <li><a id="navAbout" href="about.html">About</a></li>
+            <li><a id="navContact" href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="auth-buttons">
+        <select class="language-selector" id="languageSelector">
+            <option value="en">English</option>
+            <option value="te">తెలుగు</option>
+        </select>
+        <button class="login-btn" id="loginBtn">Login</button>
+        <button class="signup-btn" id="signupBtn">Sign Up</button>
+    </div>
+    
+</header>
+
+<main>
+    <section class="hero">
+        <h2 id="heroTitle">Know Your Rights, Protect Yourself</h2>
+        <p id="heroDescription">
+            LegalEase provides simple, accessible information about your legal rights in multiple languages. Empower yourself with knowledge.
+        </p>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search in English or తెలుగు">
+            <button id="searchButton"><i class="fas fa-search"></i></button>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-gavel"></i>
+            <h3 id="feature1Title">Simplified Legal Info</h3>
+            <p id="feature1Desc">Easy-to-understand explanations of your rights without complex legal jargon.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-language"></i>
+            <h3 id="feature2Title">Multiple Languages</h3>
+            <p id="feature2Desc">Available in regional languages to ensure everyone can access the information.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-robot"></i>
+            <h3 id="feature3Title">Legal Chatbot</h3>
+            <p id="feature3Desc">Get answers to your legal questions instantly with our AI assistant.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-column">
+            <h3>LegalEase</h3>
+            <p id="footerAboutDesc">
+                Empowering citizens with knowledge of their legal rights through simple, accessible information.
+            </p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+        <div class="footer-column">
+            <h3 id="footerLinksTitle">Quick Links</h3>
+            <ul>
+                <li><a id="footerLink1" href="index.html">Home</a></li>
+                <li><a id="footerLink2" href="rights.html">Know Your Rights</a></li>
+                <li><a id="footerLink3" href="emergency.html">Emergency Help</a></li>
+                <li><a id="footerLink4" href="about.html">About Us</a></li>
+                <li><a id="footerLink5" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3 id="footerContactTitle">Contact Us</h3>
+            <ul>
+                <li><i class="fas fa-envelope"></i> contact@legalease.org</li>
+                <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                <li><i class="fas fa-map-marker-alt"></i> New Delhi, India</li>
+            </ul>
+        </div>
+    </div>
+</footer>
+
+<!-- Chatbot -->
+<div class="chatbot-container">
+    <div class="chatbot-button" id="chatbotButton">
+        <i class="fas fa-robot"></i>
+    </div>
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <h3 id="chatbotHeader">LegalEase Assistant</h3>
+            <button class="chatbot-close" id="chatbotClose">&times;</button>
+        </div>
+        <div class="chatbot-messages">
+            <div class="message bot-message" id="chatbotWelcomeMessage">
+                Hello! I'm your legal assistant. How can I help you today?
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// language.js
+document.addEventListener('DOMContentLoaded', function () {
+    const translations = {
+        en: {
+            navHome: "Home",
+            navRights: "Know Your Rights",
+            navEmergency: "Emergency Help",
+            navAbout: "About",
+            navContact: "Contact",
+            heroTitle: "Know Your Rights, Protect Yourself",
+            heroDescription: "LegalEase provides simple, accessible information about your legal rights in multiple languages. Empower yourself with knowledge.",
+            feature1Title: "Simplified Legal Info",
+            feature1Desc: "Easy-to-understand explanations of your rights without complex legal jargon.",
+            feature2Title: "Multiple Languages",
+            feature2Desc: "Available in regional languages to ensure everyone can access the information.",
+            feature3Title: "Legal Chatbot",
+            feature3Desc: "Get answers to your legal questions instantly with our AI assistant.",
+            footerLinksTitle: "Quick Links",
+            footerLink1: "Home",
+            footerLink2: "Know Your Rights",
+            footerLink3: "Emergency Help",
+            footerLink4: "About Us",
+            footerLink5: "Contact",
+            footerContactTitle: "Contact Us",
+            footerAboutDesc: "Empowering citizens with knowledge of their legal rights through simple, accessible information.",
+            chatbotHeader: "LegalEase Assistant",
+            chatbotWelcomeMessage: "Hello! I'm your legal assistant. How can I help you today?"
+        },
+        te: {
+            navHome: "హోమ్",
+            navRights: "మీ హక్కులు తెలుసుకోండి",
+            navEmergency: "అత్యవసర సహాయం",
+            navAbout: "గురించి",
+            navContact: "సంప్రదించండి",
+            heroTitle: "మీ హక్కులు తెలుసుకోండి, మీను రక్షించుకోండి",
+            heroDescription: "లీగల్ ఈజ్ మీ హక్కుల గురించి సులభంగా అర్థమయ్యే సమాచారాన్ని పలు భాషల్లో అందిస్తుంది. జ్ఞానం ద్వారా శక్తివంతం అవ్వండి.",
+            feature1Title: "సరళమైన న్యాయ సమాచారం",
+            feature1Desc: "కఠినమైన న్యాయ పదజాలం లేకుండా మీ హక్కులపై సులభంగా అర్థమయ్యే వివరణలు.",
+            feature2Title: "అనేక భాషలు",
+            feature2Desc: "ప్రతి ఒక్కరికీ సమాచారం చేరేలా ప్రాంతీయ భాషల్లో అందుబాటులో ఉంటుంది.",
+            feature3Title: "న్యాయ చాట్‌బాట్",
+            feature3Desc: "మా AI సహాయకుడితో మీ న్యాయ ప్రశ్నలకు వెంటనే సమాధానాలు పొందండి.",
+            footerLinksTitle: "త్వరిత లింకులు",
+            footerLink1: "హోమ్",
+            footerLink2: "మీ హక్కులు తెలుసుకోండి",
+            footerLink3: "అత్యవసర సహాయం",
+            footerLink4: "గురించి",
+            footerLink5: "సంప్రదించండి",
+            footerContactTitle: "మమ్మల్ని సంప్రదించండి",
+            footerAboutDesc: "సులభంగా అర్థమయ్యే సమాచారంతో పౌరులను వారి న్యాయ హక్కుల జ్ఞానంతో శక్తివంతం చేయడం.",
+            chatbotHeader: "లీగల్ ఈజ్ సహాయకుడు",
+            chatbotWelcomeMessage: "హలో! నేను మీ న్యాయ సహాయకుడు. మీకు ఈ రోజు ఎలా సహాయం చేయగలను?"
+        }
+    };
+
+    const langSelector = document.getElementById('languageSelector');
+
+    function updateLanguage(lang) {
+        Object.keys(translations[lang]).forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.innerText = translations[lang][id];
+        });
+    }
+
+    if (langSelector) {
+        langSelector.addEventListener('change', function () {
+            const selectedLang = langSelector.value;
+            localStorage.setItem("selectedLanguage", selectedLang);
+            updateLanguage(selectedLang);
+        });
+    }
+
+    const savedLang = localStorage.getItem("selectedLanguage") || "en";
+    if (langSelector) langSelector.value = savedLang;
+    updateLanguage(savedLang);
+});
+
+</script>
+<script src="language.js"></script>
+
+</body>
+</html>

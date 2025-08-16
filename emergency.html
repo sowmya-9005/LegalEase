@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Help | LegalEase</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ===== Base Styles ===== */
+        :root {
+            --primary: #2b6cb0;
+            --primary-dark: #1e4e8c;
+            --primary-light: #ebf4ff;
+            --danger: #1e4e8c;
+            --danger-dark: #1e6dc2;
+            --white: #ffffff;
+            --text: #1a202c;
+            --text-light: #4a5568;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --transition: all 0.2s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', system-ui, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        /* ===== Header ===== */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: var(--space-md) 0;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: var(--space-lg);
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            opacity: 0.9;
+        }
+
+        nav a.active {
+            font-weight: 600;
+            text-decoration: underline;
+        }
+
+        /* ===== Emergency Hero ===== */
+        .emergency-hero {
+            background: linear-gradient(#1e4e8c, #1e4e8c), 
+                        url('https://images.unsplash.com/photo-1603984362497-0a878f607b92?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            color: var(--white);
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .emergency-hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .emergency-hero p {
+            max-width: 700px;
+            margin: 0 auto var(--space-xl);
+            font-size: 1.1rem;
+        }
+
+        .emergency-btn {
+            display: inline-block;
+            background: var(--white);
+            color: var(--danger);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-sm);
+            font-weight: 700;
+            text-decoration: none;
+            transition: var(--transition);
+            margin: 0 var(--space-sm);
+            box-shadow: var(--shadow-md);
+        }
+
+        .emergency-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2);
+        }
+
+        .emergency-btn i {
+            margin-right: var(--space-sm);
+        }
+
+        /* ===== Emergency Resources ===== */
+        .emergency-resources {
+            padding: var(--space-xl) 0;
+        }
+
+        .emergency-resources h2 {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+            color: var(--danger);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .resource-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            border-top: 4px solid var(--danger);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resource-icon {
+            background: var(--danger);
+            color: var(--white);
+            padding: var(--space-lg);
+            text-align: center;
+            font-size: 2rem;
+        }
+
+        .resource-content {
+            padding: var(--space-lg);
+        }
+
+        .resource-content h3 {
+            margin-bottom: var(--space-md);
+            color: var(--danger);
+        }
+
+        .resource-content p {
+            margin-bottom: var(--space-md);
+            color: var(--text-light);
+        }
+
+        .resource-btn {
+            display: inline-block;
+            background: var(--danger);
+            color: var(--white);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .resource-btn:hover {
+            background: var(--danger-dark);
+        }
+
+        /* ===== Emergency Contacts ===== */
+        .emergency-contacts {
+            background: var(--primary-light);
+            padding: var(--space-xl) 0;
+        }
+
+        .contact-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            background: var(--white);
+            padding: var(--space-md);
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-md);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .contact-icon {
+            background: var(--danger);
+            color: var(--white);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--space-md);
+            flex-shrink: 0;
+        }
+
+        .contact-info h3 {
+            margin-bottom: var(--space-sm);
+        }
+
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: var(--space-xl) 0;
+            text-align: center;
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 768px) {
+            .emergency-hero h2 {
+                font-size: 2rem;
+            }
+            
+            .emergency-btns {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            .emergency-btn {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+   <header>
+    <div class="logo">
+        <i class="fas fa-balance-scale"></i>
+        <h1>LegalEase</h1>
+    </div>
+    <nav>
+        <ul>
+            <li><a id="navHome" href="index.html">Home</a></li>
+            <li><a id="navRights" href="rights.html">Know Your Rights</a></li>
+            <li><a id="navEmergency" href="emergency.html">Emergency Help</a></li>
+            <li><a id="navAbout" href="about.html">About</a></li>
+            <li><a id="navContact" href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <div class="auth-buttons">
+        
+        <button class="login-btn" id="loginBtn">Login</button>
+        <button class="signup-btn" id="signupBtn">Sign Up</button>
+    </div>
+    
+</header>
+
+    <!-- Emergency Hero -->
+    <section class="emergency-hero">
+        <div class="container">
+            <h2>Immediate Legal Assistance</h2>
+            <p>If you're in immediate danger or need urgent legal help, use these resources.</p>
+            <div class="emergency-btns">
+                <a href="tel:100" class="emergency-btn">
+                    <i class="fas fa-phone"></i> Call Police (100)
+                </a>
+                <a href="tel:1091" class="emergency-btn">
+                    <i class="fas fa-phone"></i> Women's Helpline (1091)
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Resources -->
+    <section class="emergency-resources">
+        <div class="container">
+            <h2>Emergency Resources</h2>
+            <div class="resource-grid">
+                <!-- Card 1 -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Legal Aid</h3>
+                        <p>Free legal assistance for those who can't afford a lawyer.</p>
+                        <a href="#" class="resource-btn">Get Help Now</a>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Domestic Violence</h3>
+                        <p>Immediate protection and legal support for domestic abuse victims.</p>
+                        <a href="tel:181" class="resource-btn">Call 181</a>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="resource-card">
+                    <div class="resource-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <div class="resource-content">
+                        <h3>Child Protection</h3>
+                        <p>Report child abuse or exploitation to authorities.</p>
+                        <a href="tel:1098" class="resource-btn">Childline (1098)</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emergency Contacts -->
+    <section class="emergency-contacts">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: var(--space-xl);">Essential Contacts</h2>
+            <div class="contact-list">
+                <!-- Contact 1 -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-ambulance"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Medical Emergency</h3>
+                        <a href="tel:108">108</a> | 
+                        <a href="tel:102">102 (Ambulance)</a>
+                    </div>
+                </div>
+                
+                <!-- Contact 2 -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-balance-scale-left"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>National Legal Services</h3>
+                        <a href="tel:155345">155345</a>
+                    </div>
+                </div>
+                
+                <!-- Contact 3 -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Women's Commission</h3>
+                        <a href="tel:7827170170">7827170170</a>
+                    </div>
+                </div>
+                
+                <!-- Contact 4 -->
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Human Trafficking</h3>
+                        <a href="tel:1100">1100</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+ <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3 id="footerAboutTitle">LegalEase</h3>
+                <p id="footerAboutDesc">Empowering citizens with knowledge of their legal rights through simple, accessible information.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3 id="footerLinksTitle">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" id="footerLink1">Home</a></li>
+                    <li><a href="rights.html" id="footerLink2">Know Your Rights</a></li>
+                    <li><a href="emergency.html" id="footerLink3">Emergency Help</a></li>
+                    <li><a href="about.html" id="footerLink4">About Us</a></li>
+                    <li><a href="contact.html" id="footerLink5">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 id="footerResourcesTitle">Legal Resources</h3>
+                <ul>
+                    <li><a href="#" id="footerResource1">Indian Constitution</a></li>
+                    <li><a href="#" id="footerResource2">Supreme Court Judgments</a></li>
+                    <li><a href="#" id="footerResource3">Legal Aid Clinics</a></li>
+                    <li><a href="#" id="footerResource4">NGO Partners</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 id="footerContactTitle">Contact Us</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> contact@legalease.org</li>
+                    <li><i class="fas fa-phone"></i> +91 9876543210</li>
+                    <li><i class="fas fa-map-marker-alt"></i> New Delhi, India</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p id="copyrightText">&copy; 2025 LegalEase. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-button" id="chatbotButton">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3 id="chatbotHeader">LegalEase Assistant</h3>
+                <button class="chatbot-close" id="chatbotClose">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message" id="chatbotWelcomeMessage">
+                    Hello! I'm your legal assistant. How can I help you today? You can ask me about your rights, legal procedures, or find relevant contacts.
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Type your legal question...">
+                <button id="chatbotSend"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Controls -->
+    <div class="voice-controls">
+        <button class="voice-btn" id="listenBtn" title="Voice Search">
+            <i class="fas fa-microphone"></i>
+        </button>
+        <button class="voice-btn stop" id="stopListenBtn" title="Stop Listening" style="display: none;">
+            <i class="fas fa-microphone-slash"></i>
+        </button>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="loginModalTitle">Login</h2>
+                <button class="modal-close" id="loginModalClose">&times;</button>
+            </div>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail" id="loginEmailLabel">Email</label>
+                    <input type="email" id="loginEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword" id="loginPasswordLabel">Password</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="loginCancel"><span id="loginCancelText">Cancel</span></button>
+                    <button type="submit" class="btn btn-primary"><span id="loginSubmitText">Login</span></button>
+                </div>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;"><span id="noAccountText">Don't have an account?</span> <a href="#" id="showSignup"><span id="signupLinkText">Sign up</span></a></p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="signupModalTitle">Sign Up</h2>
+                <button class="modal-close" id="signupModalClose">&times;</button>
+            </div>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="signupName" id="signupNameLabel">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail" id="signupEmailLabel">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword" id="signupPasswordLabel">Password</label>
+                    <input type="password" id="signupPassword" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPhone" id="signupPhoneLabel">Phone Number</label>
+                    <input type="tel" id="signupPhone">
+                </div>
+                <div class="form-group">
+                    <label for="signupQualifications" id="signupQualificationsLabel">Qualifications</label>
+                    <textarea id="signupQualifications" required placeholder="Please describe your legal qualifications or experience"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="signupSpecialization" id="signupSpecializationLabel">Area of Specialization (if any)</label>
+                    <input type="text" id="signupSpecialization" placeholder="e.g. Family Law, Labor Law">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="signupCancel"><span id="signupCancelText">Cancel</span></button>
+                    <button type="submit" class="btn btn-primary"><span id="signupSubmitText">Submit Application</span></button>
+                </div>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;"><span id="haveAccountText">Already have an account?</span> <a href="#" id="showLogin"><span id="loginLinkText">Login</span></a></p>
+        </div>
+    </div>
+</body>
+<script src="script.js"></script>
+<script src="language.js"></script>
+
+</html>
